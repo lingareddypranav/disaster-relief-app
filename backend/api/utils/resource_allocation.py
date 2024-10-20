@@ -1,16 +1,16 @@
-# backend/api/utils/resource_allocation.py
 # api/utils/resource_allocation.py
-from ..api_clients.population_client import PopulationClient
 from api.models import Hurricane
-import json
-import shapely.geometry
-import shapely.ops
-import requests
+from ..api_clients.population_client import PopulationClient
+from django.core.exceptions import ObjectDoesNotExist
 
 def calculate_resource_needs():
     # Get the latest hurricane
-    hurricane = Hurricane.objects.latest('timestamp')
-    
+    try:
+        hurricane = Hurricane.objects.latest('timestamp')
+    except ObjectDoesNotExist:
+        print("No hurricanes found in the database.")
+        return {'food': 0, 'water': 0, 'medical': 0}
+
     # Use forecasted_path to determine affected counties
     affected_counties = get_affected_counties(hurricane.forecasted_path)
 
@@ -39,19 +39,8 @@ def calculate_resource_needs():
     return total_resources
 
 def get_affected_counties(forecasted_path):
-    # Load county boundaries (you'll need to download a shapefile or GeoJSON of US counties)
-    # For demo purposes, we'll simulate this
-    # You can use the Census Bureau's TIGER/Line shapefiles
-    # Extract all latitudes and longitudes from the forecasted path
-    latitudes = [point['latitude'] for point in forecasted_path]
-    longitudes = [point['longitude'] for point in forecasted_path]
-
-    # Determine bounding box
-    min_lat = min(latitudes)
-    max_lat = max(latitudes)
-    min_lon = min(longitudes)
-    max_lon = max(longitudes)
-    # Simulate affected counties
+    # Implement logic to determine affected counties based on forecasted_path
+    # For now, simulate affected counties
     return [
         {'state_fips': '12', 'county_fips': '086'},  # Miami-Dade County, FL
         {'state_fips': '12', 'county_fips': '099'},  # Palm Beach County, FL

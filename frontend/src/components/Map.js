@@ -13,20 +13,21 @@ function Map({ hurricanes, vehicles }) {
       />
       {hurricanes && hurricanes.map(hurricane => (
         <React.Fragment key={hurricane.id}>
-          {hurricane.forecasted_path && hurricane.forecasted_path.length > 0 && (
-            <Polyline
-              positions={hurricane.forecasted_path.map(coord => [coord.latitude, coord.longitude])}
-              color="red"
-            />
-          )}
-          {hurricane.past_path && hurricane.past_path.length > 0 && (
-            <Polyline
-              positions={hurricane.past_path.map(coord => [coord.latitude, coord.longitude])}
-              color="orange"
-            />
-          )}
-        </React.Fragment>
-      ))}
+            {hurricane.forecasted_path && hurricane.forecasted_path.length > 0 && (
+                <Polyline
+                    positions={hurricane.forecasted_path.map(coord => [coord.latitude, coord.longitude])}
+                    color="red"
+                />
+    )}
+    {hurricane.past_path && hurricane.past_path.length > 0 && (
+      <Polyline
+        positions={hurricane.past_path.map(coord => [coord.latitude, coord.longitude])}
+        color="orange"
+      />
+    )}
+  </React.Fragment>
+))}
+
       {vehicles && vehicles.map(vehicle => (
         <React.Fragment key={vehicle.id}>
           <Polyline
