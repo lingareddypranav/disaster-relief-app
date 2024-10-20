@@ -95,6 +95,7 @@ CORS_ALLOWED_ORIGINS = [
 XWEATHER_CLIENT_ID = ('i8cdISuXkvtmByryZo5CL')
 XWEATHER_CLIENT_SECRET = ('KjeUErls0D8FYwxZEvIJzSMCkqlNKWWkHBW8Qnep')
 CENSUS_API_KEY = ('d24a2fe8b3f3a6c69d375308adcdc32043c5311a')
+GEMINI_AI_API_KEY = 'AIzaSyBFxA57depnW84SgKjIqd_ECRMh8__1xM0'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

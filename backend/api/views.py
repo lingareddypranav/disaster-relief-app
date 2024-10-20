@@ -54,3 +54,8 @@ class DistributionCenterViewSet(viewsets.ModelViewSet):
 class VehicleViewSet(viewsets.ModelViewSet):
     queryset = Vehicle.objects.all()
     serializer_class = VehicleSerializer
+
+    # api/views.py
+
+
+

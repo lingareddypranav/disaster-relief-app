@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { getHurricanes, getVehicles, getResourceNeeds, dispatchResources } from '../services/apiService';
 import Map from './Map';
+import MapWithVehicles from './MapWithVehicles';
 import ResourceAllocation from './ResourceAllocation';
 import TransportationList from './TransportationList';
 
@@ -40,7 +41,7 @@ function Dashboard() {
   return (
     <div>
       <h1>Disaster Relief Dashboard</h1>
-      <Map hurricanes={hurricanes} vehicles={vehicles} />
+      <MapWithVehicles/>
       <ResourceAllocation predictedNeeds={resourceNeeds} onApprove={handleApprove} />
       <TransportationList vehicles={vehicles} />
     </div>
